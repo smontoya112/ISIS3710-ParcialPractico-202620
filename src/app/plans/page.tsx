@@ -13,6 +13,7 @@ export default async function PlansPage() {
           <Link key={plan.id} href={`/plans/${plan.id}`}>
             <img
               src={plan.image}
+              alt={plan.name}
               className="w-full h-60 object-cover rounded-xl"
             />
             <h4 className="text-2xl text-slate-900 mt-3">{plan.name}</h4>
@@ -24,6 +25,7 @@ export default async function PlansPage() {
                 strokeWidth={2}
                 stroke="currentColor"
                 className="w-4 h-4 mr-1"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"

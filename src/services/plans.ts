@@ -1,3 +1,5 @@
+import { getSession } from "./session";
+
 // La URL del back se configura en el archivo .env
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -44,6 +46,29 @@ export async function getPlans(): Promise<PlanSummary[]> {
 }
 
 // Pide al back el detalle de un plan. Si no existe devuelve null
+
+export async function createPlan(planData: Omit<Plan, "id" |"likes"| "creator">): Promise<Plan | null> {
+  const session = getSession();
+  if (!session.id) {
+    throw new Error("No hay sesión iniciada");
+  }
+  const response = await fetch(`${API_URL}/plans`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...planData, userId: session.id }),
+  });
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    throw new Error("No se pudo cargar el plan");
+  }
+
+  return response.json();
+}
+
 export async function getPlan(id: string): Promise<Plan | null> {
   const response = await fetch(`${API_URL}/plans/${id}`, { cache: "no-store" });
 

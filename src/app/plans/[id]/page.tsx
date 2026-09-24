@@ -54,7 +54,7 @@ export default function PlanDetailPage() {
   }
 
   return (
-    <div className="flex-1 bg-slate-50 px-20 py-6">
+    <div lang="es" className="flex-1 bg-slate-50 px-20 py-6" style={{ color: "red" }}>
       {/* Barra de arriba */}
       <div className="flex justify-between items-center">
         <Link href="/plans" className="text-slate-700">

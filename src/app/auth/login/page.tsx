@@ -26,7 +26,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center bg-slate-50">
+    <div className="flex-1 flex flex-col items-center justify-center bg-slate-50" style={{ color: "red" }}>
       <h1 className="text-5xl font-bold text-slate-900 mt-6">Inicia sesión</h1>
       <p className="text-lg text-slate-600 mt-2">
         Qué bueno verte de nuevo. Ingresa para ver tus planes.
